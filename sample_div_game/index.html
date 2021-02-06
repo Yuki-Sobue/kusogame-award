@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>連続divクリックゲーム</title>
+</head>
+<body>
+  <div class="root">
+    <div class="game-root basic-border">
+      <div class="score-board center">
+        連続<span id="score">で?????</span>回成功
+      </div>
+      <div class="center">
+        divをクリックし続けよう！10回間違えるとゲームオーバー！
+      </div>
+      <div class="cell-wrapper">
+        <button class="cell basic-border" id="1"></button>
+        <button class="cell basic-border" id="2"></button>
+        <button class="cell basic-border" id="3"></button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+​
+<script>
+  // Config
+  let score = 0;
+  let life = 10;
+  const successMessage = "おめでとうございます（何が？）";
+  const gameOverMessage = "ゲームオーバーです！瞑想して集中しましょう！";
+  const gameSetScore = 20;
+  const cellIds = ["1", "2", "3"];
+
+  // Class
+  class wordCell{
+    constructor(text, isCollect){
+      this.text = text;
+      this.isCollect = isCollect;
+    }
+
+    refrectContentTo(cellId){
+      let cell = document.getElementById(cellId);
+      cell.textContent = this.text;
+      cell.onclick = this.clickCell(this);
+    }
+
+    clickCell(object){
+      return () => {
+        handleCellClick(object);
+      }
+    }
+  }
+
+  const Words = [new wordCell("dev", false),
+                 new wordCell("div", true), 
+                 new wordCell("/div", false)];
+
+  // util
+
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i >= 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  } 
+
+  // TODO: ゲームライフサイクル / スコア管理 責任分割 
+  const handleCellClick = (object) => {
+    if (object.isCollect){
+      score++;
+    } else {
+      life--;
+      score = 0;
+    }
+
+    if (score === gameSetScore) {
+      alert(successMessage)
+      gameOver();
+    }
+
+    if (life === 0) {
+      alert(gameOverMessage)
+      gameOver();
+    }
+
+    document.getElementById("score").textContent = score;
+    setContents();
+  }
+
+  const setContents = () => {
+    shuffleArray(Words).map((word,idx) => {
+      word.refrectContentTo(idx + 1)
+    })
+  }
+
+  const gameOver = () => {
+    window.location.reload();
+  }
+
+  // 初期化
+  setContents();
+</script>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  .basic-border {
+    border: 1px solid gray;
+    border-radius: 6%;
+  }
+
+  .cell-wrapper {
+    width: inherit;
+    height: inherit;
+    padding: 5%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .cell{
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    align-items: center;
+    width: 30%;
+    height: 25%;
+    background-color: gray;
+  }
+
+  .cell:active{
+    background-color: orange;
+  }
+
+  .game-root{
+    padding-top: 5%;
+    width: 600px;
+    height: 500px;
+    margin: 0 auto;
+  }
+
+  .score-board{
+    font-size: 2rem;
+  }
+
+  .center{
+    text-align: center;
+  }
+</style>
