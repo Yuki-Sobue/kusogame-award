@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>はじまるかなげーむ</title>
+  </head>
+  <body class="main_view">
+    <div class="title">↓くりっくしてげーむすたーと！！↓</div>
+    <input class="btn_area" type="button" id="star_btn" value="START" onclick="hello()">
+  </body>
+</html>
+
+
+
+<script>
+  let count = 0
+  const hello = function () {
+    const startBtn = document.getElementById("star_btn")
+    if (count === 0) {
+      startBtn.setAttribute("value","START🎉")
+    }
+
+    if (count === 1) {
+      startBtn.setAttribute("value","START🎉🎉")
+    }
+
+    if (count === 2) {
+      startBtn.setAttribute("value","スタート🎉🎉🎉")
+    }
+
+    if (count === 3) {
+      startBtn.setAttribute("value","お？")
+    }
+    count = count + 1
+
+    if (count === 5) {
+      alert("終わりです。")
+      startBtn.setAttribute("value","START")
+      count = 0
+    }
+  };
+</script>
+
+<style>
+  .main_view{
+    height: 100vh;
+  }
+
+  .btn_area{
+    text-align: center;
+    width: 1000px;
+    background-color: greenyellow;
+    margin: auto;
+    cursor: pointer;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 100px;
+  }
+
+  .game_btn{
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 100px;
+  }
+
+</style>
