@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <title>Box崩しゲーム</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+    />
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="conteiner"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+      var count = 0;
+
+      function randomImages(id) {
+        var box = $(id);
+        var divList = [
+          "#ef4949",
+          "#286acc",
+          "#28cc28",
+          "#af54c6",
+          "#f9cd1e",
+          "#ef4949",
+          "#286acc",
+          "#28cc28",
+          "#af54c6",
+          "#f9cd1e",
+          "#ef4949", "#286acc", "#28cc28", "#af54c6", "#f9cd1e",
+        ];
+        for (var i = 0; i < divList.length; i++) {
+          var x = Math.floor(Math.random() * 700);
+          var y = Math.floor(Math.random() * 700);
+          box.append(
+            '<span class="box-item col' + i + '" style="background-color: ' + divList[i] + "; top:" + y + "px; left:" + x + 'px;">' + "</span>"
+          );
+        }
+      }
+      randomImages($(".conteiner"));
+
+      // まとめる時間がにゃい..(^q^)
+      $(".col0").click(function () {
+        $(".col0").addClass("animate__animated animate__hinge");
+        count += 1;
+        if (count === 15) {
+          setTimeout(function () {
+            $(".conteiner").addClass("animate__animated animate__hinge");
+          }, 2000);
+          setTimeout(function () {
+            $("body").addClass("animate__animated animate__hinge");
+          }, 5000);
+        }
+      });
+      $(".col1").click(function () {
+        $(".col1").addClass("animate__animated animate__bounceOut");
+        count += 1;
+        if (count === 15) {
+          setTimeout(function () {
+            $(".conteiner").addClass("animate__animated animate__hinge");
+          }, 2000);
+          setTimeout(function () {
+            $("body").addClass("animate__animated animate__hinge");
+          }, 5000);
+        }
+      });
+      $(".col2").click(function () {
+        $(".col2").addClass("animate__animated animate__bounceOutLeft");
+        count += 1;
+        if (count === 15) {
+          setTimeout(function () {
+            $(".conteiner").addClass("animate__animated animate__hinge");
+          }, 2000);
+          setTimeout(function () {
+            $("body").addClass("animate__animated animate__hinge");
+          }, 5000);
+        }
+      });
+      $(".col3").click(function () {
+        $(".col3").addClass("animate__animated animate__bounceOutUp");
+        count += 1;
+        if (count === 15) {
+          setTimeout(function () {
+            $(".conteiner").addClass("animate__animated animate__hinge");
+          }, 2000);
+          setTimeout(function () {
+            $("body").addClass("animate__animated animate__hinge");
+          }, 5000);
+        }
+      });
+      $(".col4").click(function () {
+        $(".col4").addClass("animate__animated animate__fadeOutDownBig");
+        count += 1;
+        if (count === 15) {
+          setTimeout(function () {
+            $(".conteiner").addClass("animate__animated animate__hinge");
+          }, 2000);
+          setTimeout(function () {
+            $("body").addClass("animate__animated animate__hinge");
+          }, 5000);
+        }
+      });
+      $(".col5").click(function () {
+        $(".col5").addClass("animate__animated animate__fadeOutRightBig");
+        count += 1;
+        if (count === 15) {
+          setTimeout(function () {
+            $(".conteiner").addClass("animate__animated animate__hinge");
+          }, 2000);
+          setTimeout(function () {
+            $("body").addClass("animate__animated animate__hinge");
+          }, 5000);
+        }
+      });
+      $(".col6").click(function () {
+        $(".col6").addClass("animate__animated animate__fadeOutTopLeft");
+        count += 1;
+        if (count === 15) {
+          setTimeout(function () {
+            $(".conteiner").addClass("animate__animated animate__hinge");
+          }, 2000);
+          setTimeout(function () {
+            $("body").addClass("animate__animated animate__hinge");
+          }, 5000);
+        }
+      });
+      $(".col7").click(function () {
+        $(".col7").addClass("animate__animated animate__fadeOutBottomLeft");
+        count += 1;
+        if (count === 15) {
+          setTimeout(function () {
+            $(".conteiner").addClass("animate__animated animate__hinge");
+          }, 2000);
+          setTimeout(function () {
+            $("body").addClass("animate__animated animate__hinge");
+          }, 5000);
+        }
+      });
+      $(".col8").click(function () {
+        $(".col8").addClass("animate__animated animate__lightSpeedOutLeft");
+        count += 1;
+        if (count === 15) {
+          setTimeout(function () {
+            $(".conteiner").addClass("animate__animated animate__hinge");
+          }, 2000);
+          setTimeout(function () {
+            $("body").addClass("animate__animated animate__hinge");
+          }, 5000);
+        }
+      });
+      $(".col9").click(function () {
+        $(".col9").addClass("animate__animated animate__rotateOut");
+        count += 1;
+        if (count === 15) {
+          setTimeout(function () {
+            $(".conteiner").addClass("animate__animated animate__hinge");
+          }, 2000);
+          setTimeout(function () {
+            $("body").addClass("animate__animated animate__hinge");
+          }, 5000);
+        }
+      });
+      $(".col10").click(function () {
+        $(".col10").addClass("animate__animated animate__zoomOutRight");
+        count += 1;
+        if (count === 15) {
+          setTimeout(function () {
+            $(".conteiner").addClass("animate__animated animate__hinge");
+          }, 2000);
+          setTimeout(function () {
+            $("body").addClass("animate__animated animate__hinge");
+          }, 5000);
+        }
+      });
+      $(".col11").click(function () {
+        $(".col11").addClass("animate__animated animate__zoomOutUp");
+        count += 1;
+        if (count === 15) {
+          setTimeout(function () {
+            $(".conteiner").addClass("animate__animated animate__hinge");
+          }, 2000);
+          setTimeout(function () {
+            $("body").addClass("animate__animated animate__hinge");
+          }, 5000);
+        }
+      });
+      $(".col12").click(function () {
+        $(".col12").addClass("animate__animated animate__rollOut");
+        count += 1;
+        if (count === 15) {
+          setTimeout(function () {
+            $(".conteiner").addClass("animate__animated animate__hinge");
+          }, 2000);
+          setTimeout(function () {
+            $("body").addClass("animate__animated animate__hinge");
+          }, 5000);
+        }
+      });
+      $(".col13").click(function () {
+        $(".col13").addClass("animate__animated animate__rollOut");
+        count += 1;
+        if (count === 15) {
+          setTimeout(function () {
+            $(".conteiner").addClass("animate__animated animate__hinge");
+          }, 2000);
+          setTimeout(function () {
+            $("body").addClass("animate__animated animate__hinge");
+          }, 5000);
+        }
+      });
+      $(".col14").click(function () {
+        $(".col14").addClass("animate__animated animate__zoomOutRight");
+        count += 1;
+        if (count === 15) {
+          $(".box-item").removeClass("animate__animated");
+          $(".box-item").addClass("rotate-anime");
+        }
+      });
+    </script>
+    <style>
+      body {
+        padding-bottom: 50px;
+        text-align: center;
+        margin: 0px;
+      }
+
+      #app {
+        margin: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(167, 167, 167);
+        height: 100vh;
+      }
+
+      .conteiner {
+        background-color: rgb(255, 255, 255);
+        width: 800px;
+        height: 800px;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+
+      .box-item {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+      }
+
+      .rotate-anime {
+        animation: rotate-anime 1s linear infinite;
+      }
+      @keyframes rotate-anime {
+        0% {
+          transform: rotate(0);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </body>
+</html>
