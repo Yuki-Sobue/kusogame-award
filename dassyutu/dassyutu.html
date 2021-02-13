@@ -1,0 +1,146 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>console hint()</title>
+</head>
+<body>
+  <input id="password" class="hidden"></input>
+  <button id="door" class="hidden" onclick="clear()">ドア</button>
+  <div id="message" class="hidden">
+    脱出成功！！！！
+    <div id="time"></div>秒でした！！
+  </div>
+</body>
+
+<script>
+  let hintCount = 0
+  let flag = 0
+  let time = 0
+
+
+  const hint = () => {
+    if (hintCount === 0) {
+      console.log("コンソールを使って遊ぶ脱出ゲームです")
+      console.log("コンソールに以下を打ち込んで脱出！")
+      console.log("dassyutu()")
+      hintCount = 1
+      return null
+    }
+
+    if (hintCount === 1) {
+      console.log("Bag in Bag に詰めるのは中身じゃない")
+      hintCount = 2
+      return null
+    }
+
+    if (hintCount === 2) {
+      console.log("Bag")
+      console.log("Kagi")
+      console.log("Saifu")
+      hintCount = 3
+      return null
+    }
+
+    if (hintCount === 3) {
+      console.log("dassyutu() is a function")
+      console.log("最大の敵は誤植")
+      hintCount = 4
+      return null
+    }
+
+
+    if (hintCount === 4 && flag === 1) {
+      console.log("探しているのはパスワードのメモじゃない")
+      hintCount = 5
+      return null
+    } else {
+      console.log("dassyutu() is a function")
+      console.log("最大の敵は誤植")
+    }
+  }
+
+  const Bag = {
+    discription: "Bag in Bag",
+    nakami: {
+      memo: {password: "15923382"}
+    }, 
+    bag: {
+      nakami: {
+        memo: {password: "15923482"}
+      }, 
+      bag: {
+        nakami: {
+          memo: {password: "15923832"}
+        }, 
+        bag: {
+          nakami: {
+            memo: {password: "15923832"}
+          }, 
+          bag: {
+            nakami: {
+              memo: {password: "15923832"}
+            }, 
+            bag: {
+              memo: {password: "15923832"},
+              momo: {password: "kusoge"},
+              nakami: {}, 
+              bag: {
+
+                nakami: {
+                  memo: {password: "15923832"}
+                }, 
+                bag: {
+                  nakami: {memo: {password: "15923832"}}, 
+                  bag: {
+                    nakami: {truepassword: "PathW@rd"}, 
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  const Kagi = {kagi: 200}
+  const Saifu = {saifu: 200}
+
+  const dassyutu = () => {
+    if (Bag.bag.bag.bag.bag.bag.bag.bag.makani.kagi === 200 && Bag.bag.bag.makani.saifu === 200) {
+      if (flag === 0) {
+        alert ("Bagの中身が揃いました")
+        console.log("パスワードを入力してください")
+        flag = 1
+        document.getElementById("password").classList.remove("hidden")
+        return null
+      }
+      passwordCheck()
+    } else {
+      alert ("BagのがMakamiが揃っていません")
+    }
+  }
+
+  const passwordCheck = () => {
+    if (document.getElementById("password").value === "kusoge") {
+      if (flag === 1) {
+        alert ("パスワード成功")
+        document.getElementById("password").classList.add("hidden")
+        document.getElementById("message").classList.remove("hidden")
+        document.getElementById("time").innerText = time
+      }
+      flag = 2
+    } else {
+      alert ("パスワードが違います。momoはBagの中身です")
+    }
+  }
+
+  const incrementtime = () => {
+    time += 1
+  }
+
+  setInterval(incrementtime, 1000)
+</script>
+
+<style>
+  .hidden {display: none;}
+</style>
