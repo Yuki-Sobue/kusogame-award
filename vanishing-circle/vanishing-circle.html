@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<title>Vanishing Circle</title>
+
+<body class="w-100 h-100">
+  <p>レベルを入力してください(ゼロ以上の整数)</p>
+  <input type="text" id="level">
+  <h4 id="input-failure"></h4>
+  <table border="1" style="margin-top:10px;">
+    <tr>
+      <th class="grid" style="width:50px;height:50px;text-align:center" id="grid11"></th>
+      <th class="grid" style="width:50px;height:50px;text-align:center" id="grid12"></th>
+      <td class="grid" style="width:50px;height:50px;text-align:center" id="grid13"></td>
+    </tr>
+    <tr>
+      <td class="grid" style="width:50px;height:50px;text-align:center" id="grid21"></td>
+      <td class="grid" style="width:50px;height:50px;text-align:center" id="grid22"></td>
+      <td class="grid" style="width:50px;height:50px;text-align:center" id="grid23"></td>
+    </tr>
+    <tr>
+      <td class="grid" style="width:50px;height:50px;text-align:center" id="grid31"></td>
+      <td class="grid" style="width:50px;height:50px;text-align:center" id="grid32"></td>
+      <td class="grid" style="width:50px;height:50px;text-align:center" id="grid33"></td>
+    </tr>
+  </table>
+  <h1 id="result"><h1>
+
+
+</body>
+<script>
+  $(function(){
+
+//ただの３目並べです。
+//ただし、レベルに応じて、入力に失敗します。
+//そして、対戦相手は上書き可能です。（自分自身に上書きすることもあります）
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
+    function judgeWinner(){
+      if (($('#grid11')[0].innerHTML === "○" && $('#grid12')[0].innerHTML === "○" && $('#grid13')[0].innerHTML === "○") || ($('#grid12')[0].innerHTML === "○" && $('#grid22')[0].innerHTML === "○" && $('#grid32')[0].innerHTML === "○") || ($('#grid13')[0].innerHTML === "○" && $('#grid23')[0].innerHTML === "○" && $('#grid33')[0].innerHTML === "○") || ($('#grid31')[0].innerHTML === "○" && $('#grid32')[0].innerHTML === "○" && $('#grid33')[0].innerHTML === "○") || ($('#grid11')[0].innerHTML === "○" && $('#grid21')[0].innerHTML === "○" && $('#grid31')[0].innerHTML === "○") || ($('#grid21')[0].innerHTML === "○" && $('#grid22')[0].innerHTML === "○" && $('#grid32')[0].innerHTML === "○") || ($('#grid11')[0].innerHTML === "○" && $('#grid22')[0].innerHTML === "○" && $('#grid33')[0].innerHTML === "○") || ($('#grid31')[0].innerHTML === "○" && $('#grid22')[0].innerHTML === "○" && $('#grid13')[0].innerHTML === "○") ){
+        $('#result').text("僥倖！");       
+      } else if (($('#grid11')[0].innerHTML === "×" && $('#grid12')[0].innerHTML === "×" && $('#grid13')[0].innerHTML === "×") || ($('#grid12')[0].innerHTML === "×" && $('#grid22')[0].innerHTML === "×" && $('#grid32')[0].innerHTML === "×") || ($('#grid13')[0].innerHTML === "×" && $('#grid23')[0].innerHTML === "×" && $('#grid33')[0].innerHTML === "×") || ($('#grid31')[0].innerHTML === "×" && $('#grid32')[0].innerHTML === "×" && $('#grid33')[0].innerHTML === "×") || ($('#grid11')[0].innerHTML === "×" && $('#grid21')[0].innerHTML === "×" && $('#grid31')[0].innerHTML === "×") || ($('#grid21')[0].innerHTML === "×" && $('#grid22')[0].innerHTML === "×" && $('#grid32')[0].innerHTML === "×") || ($('#grid11')[0].innerHTML === "×" && $('#grid22')[0].innerHTML === "×" && $('#grid33')[0].innerHTML === "×") || ($('#grid31')[0].innerHTML === "×" && $('#grid22')[0].innerHTML === "×" && $('#grid13')[0].innerHTML === "×") ){
+        $('#result').text("なんたる屈辱！");       
+      }
+    }
+    $(".grid").on("click", function(){
+      const val = getRandomInt($("#level").val());
+      if (val===0){
+        $(this).text("○");
+        judgeWinner();
+        console.log($(".grid"));
+        $(".grid")[getRandomInt(9)].innerText="×";
+        judgeWinner();
+      } else {
+        $('#input-failure').text("残念！入力失敗");
+        $(".grid")[getRandomInt(9)].innerText="×";
+        judgeWinner();
+      }
+    });
+  });
+</script>
+</html>
